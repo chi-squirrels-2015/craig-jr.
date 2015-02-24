@@ -16,13 +16,12 @@
     </ul>
     <ul id="nav_right">
       <li>
-        <% if current_user %>
-        <a class="header_button" href = "/users/<%= current_user.id %>/edit">Account</a>
-          <a id="logout" class="header_button" href = "/auth/logout">Logout</a>
-        <% else %>
-          <a id="login" class="header_button" href="/users/new">Sign Up</a>
-          <a id="login" class="header_button" href = "/auth/login">Login</a>
-        <% end %>
+<% if current_user %>
+  <%= link_to 'Profile', user_path(current_user) %> <%= link_to "Logout", '/logout' %>
+<% else %>
+  <%= link_to 'Login', '/login' %> <%= link_to 'Signup', '/signup' %>
+<% end %>
+
       </li>
     </ul>
   </header>

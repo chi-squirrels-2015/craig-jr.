@@ -6,6 +6,8 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @articles = Article.all
+    @category
   end
 
   def new
@@ -31,9 +33,15 @@ class UsersController < ApplicationController
     end
   end
 
+  def logout
+    session[:user_id] = nil
+    flash[:notice] = "You have been signed out."
+  end
+
+
   private
   def user_params
-    params.require(:user).permit(:full_name, :email)
+    params.require(:user).permit(:email, :password, :password_confirmation)
   end
 
 end
